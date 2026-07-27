@@ -27,15 +27,15 @@ crons = ["0 * * * *"]
 # ---------------------------------------------------------------------------
 [[kv_namespaces]]
 binding = "TV_SYNC_STATE"
-id = "PASTE_YOUR_KV_NAMESPACE_ID_HERE"
-preview_id = "PASTE_YOUR_PREVIEW_KV_NAMESPACE_ID_HERE"
+id = "d6763d6bed7e42279639389378991ee9"
+preview_id = "ffea510d00dd413bb7d7f19f8c41f241"
 
 [vars]
 # ---------------------------------------------------------------------------
 # FILL IN #2 — your mailbox address.
 # The Microsoft 365 account whose calendar gets written to.
 # ---------------------------------------------------------------------------
-TARGET_UPN = "PASTE_YOUR_EMAIL_HERE@example.com"
+TARGET_UPN = "leander@isame12.no"
 
 # ---------------------------------------------------------------------------
 # FILL IN #3 — your feed URL, WITHOUT the "?token=..." part.
