@@ -1,0 +1,26 @@
+{
+  "name": "airdate",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Mirrors an ICS feed of upcoming TV episodes into a Microsoft 365 calendar via the Graph API, on a cron you control.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "wrangler types && tsc --noEmit",
+    "doctor": "bash scripts/doctor.sh",
+    "secrets:push": "bash scripts/push-secrets.sh"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.18.8",
+    "typescript": "^5.9.3",
+    "vitest": "~4.1.10",
+    "wrangler": "^4.114.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "workerd@1.20260722.1": true
+  }
+}

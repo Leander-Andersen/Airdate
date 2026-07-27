@@ -1,0 +1,49 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//TVmaze//TVmaze Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:TVmaze Followed Shows
+BEGIN:VEVENT
+UID:tvmaze-episode-2634518
+DTSTAMP:20260727T120000Z
+DTSTART:20260730T210000Z
+DTEND:20260730T214500Z
+SUMMARY:Severance - S02E05 - Trojan's Horse
+DESCRIPTION:Mark makes a discovery about the severed floor that he cannot un
+ make\, and Helly's loyalties are tested when Cobel returns to Lumon with a n
+ ew mandate from the board.\n\nhttps://www.tvmaze.com/episodes/2634518/severa
+ nce-2x05-trojans-horse
+URL:https://www.tvmaze.com/episodes/2634518/severance-2x05-trojans-horse
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:tvmaze-episode-2634519
+DTSTAMP:20260727T120000Z
+DTSTART:20260731T020000Z
+SUMMARY:The Rehearsal - S03E02 - Gate Agent
+DESCRIPTION:Nathan builds a replica departure lounge.
+URL:https://www.tvmaze.com/episodes/2634519/the-rehearsal-3x02-gate-agent
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:tvmaze-episode-2634520
+DTSTAMP:20260727T120000Z
+DTSTART;VALUE=DATE:20260802
+DTEND;VALUE=DATE:20260803
+SUMMARY:Slow Horses - S05E01 - Bad Tradecraft
+DESCRIPTION:Season premiere. Release date only\; no confirmed air time.
+URL:https://www.tvmaze.com/episodes/2634520/slow-horses-5x01-bad-tradecraft
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:tvmaze-episode-2634521
+DTSTAMP:20260727T120000Z
+DTSTART:20260804T183000Z
+DTEND:20260804T190000Z
+SUMMARY:Taskmaster - S21E04 - A Terrible Pea
+DESCRIPTION:Five comedians attempt tasks\, badly.
+X-TVMAZE-SHOW-ID:2129
+X-TVMAZE-NETWORK:Channel 4
+END:VEVENT
+END:VCALENDAR

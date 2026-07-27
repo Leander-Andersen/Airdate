@@ -1,0 +1,76 @@
+#############################################################################
+#  AIRDATE — Worker configuration
+#
+#  Anything with PASTE_ in it MUST be replaced before you deploy.
+#  Everything in this file is PUBLIC. Never put a password, token or secret
+#  here — those go in .dev.vars / `wrangler secret put`. See SETUP.md.
+#############################################################################
+
+name = "airdate"
+main = "src/index.ts"
+compatibility_date = "2026-01-01"
+
+# How often the sync runs. "0 * * * *" = every hour, on the hour.
+# Every 30 min would be "0,30 * * * *". Every 15 min: "*/15 * * * *".
+[triggers]
+crons = ["0 * * * *"]
+
+# ---------------------------------------------------------------------------
+# FILL IN #1 — KV namespace ids
+#
+#   wrangler kv namespace create TV_SYNC_STATE
+#   wrangler kv namespace create TV_SYNC_STATE --preview
+#
+# Each command prints an id. Paste them below.
+# (The PASTE_ placeholders are fine for `npm test`, which simulates KV
+#  locally, but `wrangler deploy` will fail until they are real.)
+# ---------------------------------------------------------------------------
+[[kv_namespaces]]
+binding = "TV_SYNC_STATE"
+id = "PASTE_YOUR_KV_NAMESPACE_ID_HERE"
+preview_id = "PASTE_YOUR_PREVIEW_KV_NAMESPACE_ID_HERE"
+
+[vars]
+# ---------------------------------------------------------------------------
+# FILL IN #2 — your mailbox address.
+# The Microsoft 365 account whose calendar gets written to.
+# ---------------------------------------------------------------------------
+TARGET_UPN = "PASTE_YOUR_EMAIL_HERE@example.com"
+
+# ---------------------------------------------------------------------------
+# FILL IN #3 — your feed URL, WITHOUT the "?token=..." part.
+#
+#   TVmaze:  https://api.tvmaze.com/ical/followed
+#   Sonarr:  https://sonarr.yourdomain.com/feed/v3/calendar/Sonarr.ics
+#
+# The token itself is a SECRET — it goes in .dev.vars as ICS_TOKEN, not here.
+# ---------------------------------------------------------------------------
+ICS_URL = "https://api.tvmaze.com/ical/followed"
+
+# ---------------------------------------------------------------------------
+# FILL IN #4 — your timezone. Must be an IANA name, e.g.
+# "Europe/Oslo", "America/New_York", "Asia/Tokyo".
+# ---------------------------------------------------------------------------
+DISPLAY_TIMEZONE = "Europe/Oslo"
+
+# --- Optional. The defaults are sensible; change only if you want to. -------
+CALENDAR_NAME = "TV"             # Calendar to create in Outlook
+EVENT_CATEGORY = "TV"            # Colour category tagged on each event
+DEFAULT_DURATION_MINUTES = "30"  # Used when the feed gives no end time
+STATE_RETENTION_DAYS = "30"      # How long aired episodes stay tracked
+RECENT_LIMIT = "100"             # Size of the "recently added" log
+FEED_ID = "default"              # Leave alone unless you add a second feed
+DEBUG = "false"                  # "true" for verbose logs while debugging
+
+#############################################################################
+#  SECRETS — do NOT put these here. See SETUP.md step 5.
+#
+#    GRAPH_TENANT_ID          required
+#    GRAPH_CLIENT_ID          required
+#    GRAPH_CLIENT_SECRET      required
+#    ICS_TOKEN                required if your feed URL has a ?token=
+#    CF_ACCESS_CLIENT_ID      only for a Sonarr feed behind Cloudflare Access
+#    CF_ACCESS_CLIENT_SECRET  only for a Sonarr feed behind Cloudflare Access
+#    MANUAL_TRIGGER_TOKEN     optional, enables the /recent and /sync endpoints
+#    ALERT_WEBHOOK_URL        optional, pinged when a sync run fails
+#############################################################################

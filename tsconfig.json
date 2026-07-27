@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "lib": ["es2022"],
+    "module": "es2022",
+    "moduleResolution": "bundler",
+    // Runtime types come from `wrangler types` (worker-configuration.d.ts, generated
+    // by the typecheck script). This entry adds the `cloudflare:test` module.
+    "types": ["@cloudflare/vitest-pool-workers/types"],
+
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "noEmit": true
+  },
+  "include": ["src/**/*.ts", "test/**/*.ts", "*.ts"]
+}

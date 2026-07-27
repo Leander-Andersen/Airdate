@@ -1,0 +1,58 @@
+#############################################################################
+#  AIRDATE — SECRETS
+#
+#  1. Copy this file to `.dev.vars`   ->   cp .dev.vars.example .dev.vars
+#  2. Paste your values in below (keep the quotes off, no spaces around `=`)
+#  3. Run `npm run secrets:push` to upload them to Cloudflare
+#
+#  `.dev.vars` is gitignored. It will NOT be committed. Never rename it to
+#  something else and never paste these values into wrangler.toml.
+#
+#  Where each value comes from is explained in SETUP.md.
+#############################################################################
+
+
+# --- REQUIRED: Microsoft ---------------------------------------------------
+# From SETUP.md step 1. All three come from the Entra app registration.
+
+# Entra admin center -> your app -> Overview -> "Directory (tenant) ID"
+GRAPH_TENANT_ID=
+
+# Entra admin center -> your app -> Overview -> "Application (client) ID"
+GRAPH_CLIENT_ID=
+
+# Entra admin center -> your app -> Certificates & secrets -> the "Value"
+# column (NOT "Secret ID"). You can only see this once, right after you
+# create it. If you missed it, delete the secret and make a new one.
+GRAPH_CLIENT_SECRET=
+
+
+# --- REQUIRED (usually): your TV feed token --------------------------------
+# If your feed URL looks like
+#   https://api.tvmaze.com/ical/followed?token=abc123
+# then paste ONLY the `abc123` part here. Leave blank if your feed URL has
+# no ?token= in it.
+ICS_TOKEN=
+
+
+# --- OPTIONAL: remote control endpoints ------------------------------------
+# Set this to switch on GET /recent, GET /status and POST /sync.
+# Leave blank and the Worker answers 404 to every HTTP request, which is the
+# safest setting. Must be at least 32 characters if you set it.
+#
+# Generate a good one with:
+#   openssl rand -hex 32
+MANUAL_TRIGGER_TOKEN=
+
+
+# --- OPTIONAL: Sonarr behind Cloudflare Access -----------------------------
+# ONLY if your feed is a private Sonarr instance behind a Cloudflare Tunnel.
+# Leave both blank for TVmaze. It is both or neither — one alone is rejected.
+CF_ACCESS_CLIENT_ID=
+CF_ACCESS_CLIENT_SECRET=
+
+
+# --- OPTIONAL: failure alerting --------------------------------------------
+# An https URL that gets a POST when a sync run fails. Uptime Kuma push URL,
+# a Discord/Slack webhook, ntfy, whatever you use. Leave blank for none.
+ALERT_WEBHOOK_URL=
