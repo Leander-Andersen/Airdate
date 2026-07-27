@@ -97,6 +97,15 @@ Copy both onto your worksheet now.
 
 **1c. Grant the permission**
 
+Once you have Values 1 and 2, this prints both links you need, filled in with
+your own ids so there is nothing to hunt for:
+
+```bash
+npm run consent -- <Value 1: tenant id> <Value 2: client id>
+```
+
+Or do it by hand:
+
 1. Left sidebar of your app → **API permissions**
 2. **+ Add a permission** → **Microsoft Graph**
 3. Choose **Application permissions** — ***not*** Delegated permissions
@@ -105,8 +114,22 @@ Copy both onto your worksheet now.
 
 - [ ] `Calendars.ReadWrite` shows a green tick under "Status"
 
-If the "Grant admin consent" button is greyed out, you are not a tenant admin
-and need someone who is to click it.
+> Why **Application** and not **Delegated**: delegated permissions act on behalf
+> of a signed-in user. A cron job has no signed-in user, so a delegated grant
+> looks correct in the portal and then fails at runtime.
+
+**If you are not a tenant admin**, the "Grant admin consent" button is greyed
+out. Send your admin this link instead — it gives them a normal Microsoft
+sign-in page, shows exactly what is being granted, and they click Accept:
+
+```
+https://login.microsoftonline.com/<tenant-id>/adminconsent?client_id=<client-id>
+```
+
+They may land on a blank or error page afterwards, because this app has no
+redirect URI registered. That is harmless — the consent is recorded before the
+redirect happens. Confirm by reloading the API permissions page and looking for
+the green tick.
 
 ---
 

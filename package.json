@@ -11,7 +11,8 @@
     "test:watch": "vitest",
     "typecheck": "wrangler types && tsc --noEmit",
     "doctor": "bash scripts/doctor.sh",
-    "secrets:push": "bash scripts/push-secrets.sh"
+    "secrets:push": "bash scripts/push-secrets.sh",
+    "consent": "bash scripts/consent-url.sh"
   },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.18.8",
