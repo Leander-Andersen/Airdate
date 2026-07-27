@@ -10,6 +10,17 @@ name = "airdate"
 main = "src/index.ts"
 compatibility_date = "2026-01-01"
 
+# The workers.dev URL is what serves /recent, /status and /sync. Those answer
+# 404 to everything unless MANUAL_TRIGGER_TOKEN is set, so having it enabled is
+# not itself an exposure — but the choice is stated here rather than left to a
+# default that could change under us.
+workers_dev = true
+
+# Preview URLs would publish every single deployment on its own public
+# hostname, each with the same secrets bound to it. Nothing here needs that,
+# and it is extra attack surface that is easy to forget exists.
+preview_urls = false
+
 # How often the sync runs. "0 * * * *" = every hour, on the hour.
 # Every 30 min would be "0,30 * * * *". Every 15 min: "*/15 * * * *".
 [triggers]
